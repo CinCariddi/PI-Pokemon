@@ -88,13 +88,5 @@ router.post("/pokemons", async (req, res) => {
         }
     })
 
-router.post('/types', (req, res) => {
-    const { name } = req.body
-    
-    const newType = Type.create({
-        name
-    }).then((newType)=>{newType})
-    res.json(newType)
-})
 
 module.exports = router;
