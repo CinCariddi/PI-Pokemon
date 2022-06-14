@@ -1,0 +1,40 @@
+.navBar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.boton {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border-color: black;
+    width: 250px;
+    text-align: center;
+    margin: 5px;
+}
+
+.boton:hover{
+    background-color: black;
+    color: white;
+}
+
+.btn {
+    background-color: white;
+    border: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+}

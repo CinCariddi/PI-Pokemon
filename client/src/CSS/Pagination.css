@@ -1,0 +1,11 @@
+.pagination {
+    background-color: white;
+    border: 1px dotted rgb(179, 176, 176);
+    margin-right: 2px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pagination:hover {
+    background-color: rgb(179, 176, 176);
+}

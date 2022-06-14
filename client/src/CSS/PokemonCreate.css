@@ -1,0 +1,107 @@
+.containerForm{
+    background: linear-gradient(to bottom, rgb(225, 85, 85), white)
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnForm {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tt {
+    font-size: 50pt;
+    text-shadow: 10px 11px 18px rgba(300, 180, 100, 1),
+    -10px -11px 18px black;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.boton3 {
+    margin: 3em;
+    width: 100px;
+    height: 40px;
+    color:white;
+    font-weight:bold;
+    font-family: serif;
+    background: black;
+    border-radius: 25%;
+    border-color: black;
+    animation: radial-pulse 1s infinite;
+    }
+@keyframes radial-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+    }
+      
+    100% {
+        box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+    }
+}
+
+.texto{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.espacio {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+    width: 20%;
+}
+
+.espacio:hover{
+    background-color: white;
+    color: black;
+}
+
+.x {
+    display: flex;
+    justify-content: right;
+    background-color: white;
+    border: 1px solid white;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 100px
+}
+
+.botonx {
+    display:flex;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 20px;
+    margin-right: 4px;
+    margin: 4px;
+}
+
+.botonx:hover {
+    background-color: rgb(241, 65, 65);
+}
+
+.posicionX {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.lista{
+    display: flex;
+    flex-direction: row;
+}
+
+.errors{
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}

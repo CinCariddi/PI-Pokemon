@@ -1,0 +1,28 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("https://fondosmil.com/fondo/14708.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.btnIngreso {
+    background-color: black;
+    color: red;
+    opacity: .9;
+    border: 2px solid red;
+    border-radius: 7px;
+    width: 200px;
+    height: 30px;
+    font-family: serif;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.btnIngreso:hover {
+    color: black;
+    background-color: red;
+}

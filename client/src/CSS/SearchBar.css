@@ -1,0 +1,24 @@
+.btnSearch {
+    background-color: white;
+    display: flex;
+    color: black;
+    border: 1px solid white;
+    border-radius: 7px;
+}
+
+.btnSearch:hover {
+    background-color: black;
+    color: white;
+}
+
+.text {
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.botOn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
