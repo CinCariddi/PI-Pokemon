@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTypes, postPokemon } from '../actions/index'
 import {Link} from 'react-router-dom'
 import '../CSS/PokemonCreate.css'
+import swal from 'sweetalert'
 
 
 function validate(pokemon, oldErrors){
@@ -95,7 +96,12 @@ export default function PokemonCreate() {
             }
             // console.log(newPokemon)
             dispatch(postPokemon(newPokemon))
-            alert('New pokemon in your Pokedex!')
+            swal({
+                title: 'New pokemon in your Pokedex!',
+                icon: 'success',
+                button: 'Ok.',
+              });
+            // alert('New pokemon in your Pokedex!')
             setPokemon({
                 name: "",
                 image: "",
@@ -108,7 +114,12 @@ export default function PokemonCreate() {
                 types: [],
             })
         } else {
-            alert('Incomplet!')
+            swal({
+                title: 'Incomplet',
+                icon: 'warning',
+                button: 'Ok.',
+              });
+            // alert('Incomplet!')
         }
     }
 

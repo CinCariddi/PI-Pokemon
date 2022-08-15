@@ -33,7 +33,7 @@
     font-weight:bold;
     font-family: serif;
     background: black;
-    border-radius: 25%;
+    border-radius: 20px;
     border-color: black;
     animation: radial-pulse 1s infinite;
     }

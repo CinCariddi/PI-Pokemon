@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonByName } from "../actions";
 import '../CSS/SearchBar.css'
+import swal from 'sweetalert'
 
 export default function SearchBar({isLoading, setIsloading}) {
     const dispatch = useDispatch()
@@ -16,23 +17,41 @@ export default function SearchBar({isLoading, setIsloading}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        setIsloading(true)
-        dispatch(getPokemonByName(name))
+        try {
+            if (name.length) {
+                setIsloading(true)
+                dispatch(getPokemonByName(name))
+            } else {
+              // alert('Debe escribir algo para buscar.');
+              swal({
+                title: 'Debe escribir algo para buscar...',
+                icon: 'warning',
+                button: 'Ok.',
+              });
+            }
+        } catch (err) {
+            throw new Error(err);
+        }
     }
 
     useEffect(() => {
         if(allPokemon.length > 0) setIsloading(false)
     }, [JSON.stringify(allPokemon)])
 
+
     return (
         <div className="botOn">
-            <input
-                type="text"
-                placeholder="Search..."
-                onChange={e => handleInputChange(e)}
-                className='text'
-            />
-            <button type="submit" onClick={(e) => handleSubmit(e)} className='btnSearch'>Search</button>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    onChange={e => handleInputChange(e)}
+                    className='text'
+                />
+            </div>
+            <div>
+                <button type="submit" onClick={(e) => handleSubmit(e)} className='btnSearch'>Search</button>
+            </div>
         </div>
     );
 }

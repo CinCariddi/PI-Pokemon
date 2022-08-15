@@ -77,7 +77,7 @@ export default function Detail() {
                         </div>
                     </div>
                 )
-                : <img src="https://i.gifer.com/5Q0v.gif" alt="loading"/>
+                : <img src="https://media3.giphy.com/media/jM4bWFBKpSFeo/giphy.gif?cid=ecf05e47wdt669ssocbe43m1uqkpkhfwfcxmyt0wqm0xnxrh&rid=giphy.gif&ct=s" alt="Loading"/>
             }
         </div>
     );

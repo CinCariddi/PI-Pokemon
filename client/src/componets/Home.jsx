@@ -74,12 +74,12 @@ export default function Home() {
                     <div className="menu2">
                         
                         <select defaultValue='Order Alphabetically!' onChange={(e) => handleOrderByAlphabet(e)} className='boton'>
-                            <option value='' > Order Alphabetically </option>
+                            <option value='All' > Order Alphabetically </option>
                             <option value="asc">A - Z ↑</option>
                             <option value="des">Z - A ↓</option>
                         </select>
                         <select defaultValue={orderAttack} onChange={(e) => handleOrderByAttack(e)} className='boton'>
-                            <option value='' > Order By Attack </option>
+                            <option value='All' > Order By Attack </option>
                             <option value="attack">Attack ↑</option>
                             <option value="low">Attack ↓</option>
                         </select>
@@ -105,7 +105,7 @@ export default function Home() {
                                 <Card id= {e.id} name={e?.name} image={e?.image} types={e?.types}/>
                             </div>
                         )
-                        : <img className='loading' src="https://i.gifer.com/5Q0v.gif" height='100vh' alt="loading"/>
+                        : <img className='loading' src="https://media3.giphy.com/media/jM4bWFBKpSFeo/giphy.gif?cid=ecf05e47wdt669ssocbe43m1uqkpkhfwfcxmyt0wqm0xnxrh&rid=giphy.gif&ct=s" height='100vh' alt="loading"/>
                         }
                 </div>
             </div>
