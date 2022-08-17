@@ -14,7 +14,7 @@ const CLEAN_DETAIL = 'CLEAN_DETAIL'
 export function getPokemon(){
     return async function(dispatch){
         try {
-            const json = await axios.get('http://localhost:3001/pokemons')
+            const json = await axios.get('https://pokeapi1.herokuapp.com/pokemons')
             return dispatch({
                 type: GET_POKEMON,
                 payload: json.data
@@ -27,7 +27,7 @@ export function getPokemon(){
 
 export function getTypes() {
     return async function(dispatch) {
-        const jsonType = await axios.get('http://localhost:3001/types')
+        const jsonType = await axios.get('https://pokeapi1.herokuapp.com/types')
         dispatch({
             type:GET_TYPES,
             payload: jsonType.data
@@ -37,7 +37,7 @@ export function getTypes() {
 
 export function getPokemonByName(name) {
     return async function(dispatch){
-        const jsonName = await axios.get(`http://localhost:3001/pokemons?name=${name}`)
+        const jsonName = await axios.get(`http://pokeapi1.herokuapp.com/pokemons?name=${name}`)
         dispatch({
             type: GET_BY_NAME,
             payload:jsonName.data
@@ -47,7 +47,7 @@ export function getPokemonByName(name) {
 
 export function getPokemonById(id){
     return async function(dispatch){
-        const jsonId = await axios.get(`http://localhost:3001/pokemons/${id}`)
+        const jsonId = await axios.get(`http://pokeapi1.herokuapp.com/pokemons/${id}`)
         dispatch({
             type: GET_BY_ID,
             payload:jsonId.data
@@ -57,7 +57,7 @@ export function getPokemonById(id){
 
 export function postPokemon(payload){
     return async function(){
-        const json = await axios.post('http://localhost:3001/pokemons', payload)
+        const json = await axios.post('https://pokeapi1.herokuapp.com/pokemons', payload)
         return json
     }
 }
