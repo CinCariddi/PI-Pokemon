@@ -9,8 +9,17 @@ require('./db');
 const { CORS_ORIGIN = 'http://localhost:3000' } = process.env;
 
 // CORS_ORIGIN holds a comma-separated list, so the deployed client and localhost can be
-// allowed at the same time.
-const allowedOrigins = CORS_ORIGIN.split(',').map((origin) => origin.trim());
+// allowed at the same time. A browser's Origin header is scheme + host with no trailing
+// slash, so strip one if it was configured with it: pasting the URL straight from the
+// address bar is the easiest way to get this wrong.
+const allowedOrigins = CORS_ORIGIN
+  .split(',')
+  .map((origin) => origin.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
+// Misconfigured CORS is the hardest failure to diagnose from the browser, which only
+// reports that the request was blocked. Log what the server actually loaded.
+console.log('Allowed CORS origins:', allowedOrigins.join(', '));
 
 const server = express();
 
