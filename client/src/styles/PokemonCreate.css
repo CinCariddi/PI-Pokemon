@@ -1,0 +1,100 @@
+.create-page {
+    background: linear-gradient(to bottom, rgb(225, 85, 85), white);
+    min-height: 100vh;
+}
+
+.create-title {
+    font-size: 50pt;
+    text-shadow: 10px 11px 18px rgba(300, 180, 100, 1),
+        -10px -11px 18px black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-label {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.create-input {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+    width: 20%;
+}
+
+.create-input:hover {
+    background-color: white;
+    color: black;
+}
+
+.create-submit {
+    margin: 3em;
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    font-family: serif;
+    background: black;
+    border-radius: 20px;
+    border-color: black;
+    animation: radial-pulse 1s infinite;
+}
+
+@keyframes radial-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+    }
+}
+
+.type-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+}
+
+.type-tag {
+    display: flex;
+    justify-content: right;
+    background-color: white;
+    border: 1px solid white;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.type-tag-remove {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 20px;
+    margin: 4px;
+}
+
+.type-tag-remove:hover {
+    background-color: rgb(241, 65, 65);
+}
+
+.type-tag-header {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.form-error {
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}

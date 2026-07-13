@@ -5,40 +5,40 @@
     width: 100%;
 }
 
-.infoDetail {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.pD{
-    margin: 4px;
-    font: small-caps 100%/200% serif;
-    color: white;
-}
-
-.divD {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.img2{
-    filter: drop-shadow(10px 14px 22px white);
-}
-
-.divDetail {
+.detail-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
 }
 
-.nameDetail {
+.detail-name {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
+}
+
+.detail-image {
+    filter: drop-shadow(10px 14px 22px white);
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.detail-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.detail-text {
+    margin: 4px;
+    font: small-caps 100%/200% serif;
+    color: white;
 }

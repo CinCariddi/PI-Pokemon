@@ -9,7 +9,7 @@
     height: 100vh;
 }
 
-.btnIngreso {
+.landing-button {
     background-color: black;
     color: red;
     opacity: .9;
@@ -22,7 +22,7 @@
     font-weight: bolder;
 }
 
-.btnIngreso:hover {
+.landing-button:hover {
     color: black;
     background-color: red;
 }

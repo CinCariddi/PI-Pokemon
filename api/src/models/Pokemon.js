@@ -1,47 +1,58 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('pokemon', {
+  sequelize.define('Pokemon', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
-      unique: true,
       primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
     image: {
       type: DataTypes.STRING,
-      defaultValue: "https://p4.wallpaperbetter.com/wallpaper/728/162/473/pokemon-first-generation-pokemon-wallpaper-preview.jpg",
+      defaultValue: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png',
+      validate: {
+        isUrl: true,
+      },
     },
     life: {
       type: DataTypes.INTEGER,
-      allowNull:false,
+      allowNull: false,
+      validate: { min: 1, max: 100 },
     },
     attack: {
       type: DataTypes.INTEGER,
+      validate: { min: 0, max: 100 },
     },
     defense: {
       type: DataTypes.INTEGER,
+      validate: { min: 0, max: 100 },
     },
     speed: {
       type: DataTypes.INTEGER,
+      validate: { min: 0, max: 100 },
     },
     height: {
       type: DataTypes.INTEGER,
+      validate: { min: 0 },
     },
     weight: {
       type: DataTypes.INTEGER,
+      validate: { min: 0 },
     },
-    createdById: {
+    // Distinguishes user-created Pokemon from the ones coming from PokeAPI.
+    createdInDb: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
     },
+  }, {
+    tableName: 'pokemons',
   });
 };

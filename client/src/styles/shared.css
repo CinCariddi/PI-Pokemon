@@ -1,0 +1,48 @@
+/* Styles used by more than one component. Imported once from App.js. */
+
+.control {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border-color: black;
+    width: 250px;
+    text-align: center;
+    margin: 5px;
+}
+
+.control:hover {
+    background-color: black;
+    color: white;
+}
+
+.home-button {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.type {
+    margin: 0;
+    display: flex;
+    font: small-caps 100%/200% serif;
+    color: transparent;
+    background-image: linear-gradient(to left, yellow, #7B68EE, red, #2ecc71, yellow);
+    background-clip: text;
+    animation: gradient-shift 3s linear infinite;
+    background-size: 500%;
+    font-weight: bold;
+}
+
+@keyframes gradient-shift {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}

@@ -1,0 +1,24 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination-button {
+    background-color: white;
+    border: 1px dotted rgb(179, 176, 176);
+    margin-right: 2px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pagination-button:hover {
+    background-color: rgb(179, 176, 176);
+}
+
+.pagination-button.is-active {
+    background-color: rgb(179, 176, 176);
+    font-weight: bold;
+}

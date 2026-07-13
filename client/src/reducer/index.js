@@ -1,110 +1,86 @@
-const stateInicial = {
-    pokemon: [],
-    allPokemons: [],
-    detail: [],
-    types: [],
-}
+import {
+  GET_POKEMON,
+  GET_TYPES,
+  SEARCH_BY_NAME,
+  GET_POKEMON_DETAIL,
+  CLEAR_DETAIL,
+  FILTER_BY_TYPE,
+  FILTER_BY_ORIGIN,
+  SORT_BY_NAME,
+  SORT_BY_ATTACK,
+} from '../actions/actionTypes';
 
-function rootReducer (state = stateInicial, action) {
-    switch(action.type) {
-        case 'GET_POKEMON' :
-            return {
-                ...state,
-                pokemon: action.payload,
-                allPokemons: action.payload,
-            }
-        case 'GET_TYPES':
-            return {
-                ...state,
-                types: action.payload
-            }
-        case 'GET_BY_NAME':
-            return {
-                ...state,
-                allPokemons: action.payload?.msg ? [] : action.payload,
-            }
-        case 'GET_BY_ID':
-            return {
-                ...state,
-                detail: action.payload
-            }
-        case 'FILTER_BY_TYPES':
-            const allPokemons = state.pokemon;
-            const newData = allPokemons.map(pok => ({...pok, types: pok.types.map(t => t?.name ? t.name : t)}))
-            const filterType =
-                action.payload === "Types"
-                    ? newData
-                    : newData.filter((e) => e.types.includes(action.payload))
-                return {
-                    ...state,
-                    allPokemons: filterType,
-                };
-        case 'FILTER_BY_CREATED':
-            const filterCreated =
-                action.payload === "Created"
-                    ? state.pokemon.filter((e) => typeof e.id === 'string')
-                    : state.pokemon.filter((e) => typeof e.id === 'number');
-                return {
-                    ...state,
-                    allPokemons:
-                        action.payload === "All" ? state.pokemon : filterCreated,
-                };
-        case 'ORDER_BY_NAME':  // los ordena alfabeticamente 
-            const alphabet = action.payload === "asc"  
-                ? state.allPokemons.sort(function (a, b) { // es un sort que los ordena en orden alfabetico
-                    if (a.name > b.name) {
-                        return 1;
-                    }else if (a.name < b.name) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                })
-                : state.allPokemons.sort(function (a, b) {
-                    if (a.name < b.name) {
-                        return 1;
-                    }else if (a.name > b.name) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                });
-                return {
-                    ...state,
-                    allPokemons: alphabet,
-                };
-        case 'ORDER_BY_ATTACK': // los ordena segun que puntaje tenga cada receta
-            let attack = action.payload === "attack"
-                ? state.allPokemons.sort(function (a, b) {
-                    if (a.attack < b.attack) {
-                        return 1;
-                    }else if (a.attack > b.attack) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                })
-                : state.allPokemons.sort(function (a, b) {
-                    if (a.attack > b.attack) {
-                        return 1;
-                    }else if (a.attack < b.attack) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                });
-                return {
-                    ...state,
-                    allPokemons: attack,
-                };
-        case 'CLEAN_DETAIL':
-            return {
-                ...state,
-                detail: [],
-            }
-        default:
-            return state
+const initialState = {
+  // allPokemon is the untouched list; filteredPokemon is what the Home page renders.
+  allPokemon: [],
+  filteredPokemon: [],
+  detail: null,
+  types: [],
+};
+
+const byName = (order) => (a, b) => (
+  order === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+);
+
+const byAttack = (order) => (a, b) => (
+  order === 'asc' ? a.attack - b.attack : b.attack - a.attack
+);
+
+export default function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_POKEMON:
+      return {
+        ...state,
+        allPokemon: action.payload,
+        filteredPokemon: action.payload,
+      };
+
+    case GET_TYPES:
+      return { ...state, types: action.payload };
+
+    case SEARCH_BY_NAME:
+      return { ...state, filteredPokemon: action.payload };
+
+    case GET_POKEMON_DETAIL:
+      return { ...state, detail: action.payload };
+
+    case CLEAR_DETAIL:
+      return { ...state, detail: null };
+
+    case FILTER_BY_TYPE:
+      return {
+        ...state,
+        filteredPokemon: action.payload === 'all'
+          ? state.allPokemon
+          : state.allPokemon.filter((p) => p.types.includes(action.payload)),
+      };
+
+    case FILTER_BY_ORIGIN: {
+      if (action.payload === 'all') {
+        return { ...state, filteredPokemon: state.allPokemon };
+      }
+      const createdInDb = action.payload === 'created';
+      return {
+        ...state,
+        filteredPokemon: state.allPokemon.filter((p) => p.createdInDb === createdInDb),
+      };
     }
-}
 
-export default rootReducer
+    // Sorting copies the array: mutating state.filteredPokemon in place would stop
+    // React from noticing the change.
+    case SORT_BY_NAME:
+      return {
+        ...state,
+        filteredPokemon: [...state.filteredPokemon].sort(byName(action.payload)),
+      };
+
+    case SORT_BY_ATTACK:
+      return {
+        ...state,
+        filteredPokemon: [...state.filteredPokemon].sort(byAttack(action.payload)),
+      };
+
+    default:
+      return state;
+  }
+}
