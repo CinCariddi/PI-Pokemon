@@ -2,6 +2,11 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { Sequelize } = require('sequelize');
+// Sequelize loads its driver dynamically, which bundlers cannot see: on Vercel the `pg`
+// package gets tree-shaken out of the function and Sequelize then fails at runtime with
+// "Please install pg package manually". Requiring it here and handing it over through
+// `dialectModule` keeps it in the bundle.
+const pg = require('pg');
 
 const {
   DATABASE_URL,
@@ -14,6 +19,8 @@ const connectionString = DATABASE_URL
   || `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const sequelize = new Sequelize(connectionString, {
+  dialect: 'postgres',
+  dialectModule: pg,
   logging: false,
   native: false,
   dialectOptions: DATABASE_URL
